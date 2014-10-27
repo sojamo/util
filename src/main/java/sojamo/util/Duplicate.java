@@ -1,6 +1,6 @@
-package net.sojamo.util;
+package sojamo.util;
 
-import static net.sojamo.util.Common.println;
+import static sojamo.util.Common.println;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

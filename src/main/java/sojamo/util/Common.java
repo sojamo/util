@@ -1,4 +1,4 @@
-package net.sojamo.util;
+package sojamo.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
