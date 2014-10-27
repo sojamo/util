@@ -1,6 +1,6 @@
 # Util
 
-A collection of classes and static functions primarily to simplify the work with java data strcutures including List, Set, Map and convenience functions to cast an Object to a specific type including int, float, double, long, boolean, List, Map, and others.
+A collection of classes and static functions with the purpose to simplify the work with java objects and data strcutures including List, Set, Map and convenience functions to cast an Object to a specific type including int, float, double, long, boolean, List, Map, and others.
 
 The following is work-in-progress and uses [processing](http://www.processing.org) based code samples.
 
