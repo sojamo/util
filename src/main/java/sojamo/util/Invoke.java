@@ -6,5 +6,6 @@ import java.util.Map;
 
 	public Object invoke( Map m );
 
-	public String desc( );
+	public String doc( );
+	
 }

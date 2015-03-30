@@ -8,7 +8,7 @@ public class AInvoke implements Invoke {
 		return Common.nil;
 	}
 
-	public String desc( ) {
+	public String doc( ) {
 		return "?";
 	}
 

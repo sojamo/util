@@ -5,7 +5,6 @@ A collection of classes and static functions with the purpose to simplify the wo
 The following is work-in-progress and uses [processing](http://www.processing.org) based code samples.
 
 ## sojamo.util.Common
-
 Some usage examples of the static functions from the sojamo.util.Common class.
 
 
@@ -38,10 +37,10 @@ An example of how to use the toMap() function to convert a sequence of object in
 	Map m = toMap( "a", 1, "b", 2, "c", "three", "d", 4.2);
 	
 	// request and cast values from Map m
-	int v0 = i(m.get("a"));
-	int v1 = i(m.get("b"));	
-	String v2 = s(m.get("c"));	
-	float v3 = f(m.get("d"));	
+	int v0 = i(m,"a");
+	int v1 = i(m,"b");	
+	String v2 = s(m,"c");	
+	float v3 = f(m,"d");	
 	println(v0,v1,v2,v3); 
 	
 ```
@@ -57,8 +56,9 @@ A convenience function to convert a sequence of parameters into a List.
 	import static sojamo.util.Common.*;
 	
 	List l = toList(1,"two",3.3,5,6);
-	int v0 = i(l.get(0));
-	println(v0);
+	int v0 = i(l,0);
+	String v1 = s(l,1);
+	println(v0,v1);
 	
 ```
 

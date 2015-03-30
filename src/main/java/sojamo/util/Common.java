@@ -13,6 +13,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -63,11 +64,29 @@ import java.util.Set;
 	}
 
 	static public BigInteger I( final Object o ) {
-		return I( o , BigInteger.valueOf( Integer.MIN_VALUE ) );
+		return I( o , BigInteger.valueOf( Long.MIN_VALUE ) );
 	}
 
 	static public BigInteger I( final Object o , final BigInteger theDefault ) {
 		return ( o instanceof BigInteger ) ? ( BigInteger ) ( o ) : theDefault;
+	}
+
+	static public BigInteger I( Map m , String thePath ) {
+		return I( m , thePath , BigInteger.valueOf( Long.MIN_VALUE ) );
+	}
+
+	static public BigInteger I( Map m , String thePath , BigInteger theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return I( o , theDefault );
+	}
+
+	static public BigInteger I( List l , int theIndex ) {
+		return I( l , theIndex , BigInteger.valueOf( Long.MIN_VALUE ) );
+	}
+
+	static public BigInteger I( List l , int theIndex , BigInteger theDefault ) {
+		Object o = value( l , theIndex );
+		return I( o , theDefault );
 	}
 
 	static public int i( final Object o ) {
@@ -86,6 +105,24 @@ import java.util.Set;
 		return isNumeric( o ) ? Integer.parseInt( o ) : theDefault;
 	}
 
+	static public int i( Map m , String thePath ) {
+		return i( m , thePath , Integer.MIN_VALUE );
+	}
+
+	static public int i( Map m , String thePath , int theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return i( o , theDefault );
+	}
+
+	static public int i( List l , int theIndex ) {
+		return i( l , theIndex , Integer.MIN_VALUE );
+	}
+
+	static public int i( List l , int theIndex , int theDefault ) {
+		Object o = value( l , theIndex );
+		return i( o , theDefault );
+	}
+
 	static public float f( final Object o ) {
 		return f( o , Float.MIN_VALUE );
 	}
@@ -102,7 +139,25 @@ import java.util.Set;
 		return isNumeric( o ) ? Float.parseFloat( o ) : theDefault;
 	}
 
-	static public int c( final String o , final int theDefault ) {
+	static public float f( Map m , String thePath ) {
+		return f( m , thePath , Float.MIN_VALUE );
+	}
+
+	static public float f( Map m , String thePath , float theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return f( o , theDefault );
+	}
+
+	static public float f( List l , int theIndex ) {
+		return f( l , theIndex , Float.MIN_VALUE );
+	}
+
+	static public float f( List l , int theIndex , float theDefault ) {
+		Object o = value( l , theIndex );
+		return f( o , theDefault );
+	}
+
+	static public int c( final String o , final char theDefault ) {
 		return hex( o , theDefault );
 	}
 
@@ -126,12 +181,48 @@ import java.util.Set;
 		return isNumeric( o ) ? Double.parseDouble( o ) : theDefault;
 	}
 
+	static public double d( Map m , String thePath ) {
+		return d( m , thePath , Double.MIN_VALUE );
+	}
+
+	static public double d( Map m , String thePath , double theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return d( o , theDefault );
+	}
+
+	static public double d( List l , int theIndex ) {
+		return d( l , theIndex , Double.MIN_VALUE );
+	}
+
+	static public double d( List l , int theIndex , double theDefault ) {
+		Object o = value( l , theIndex );
+		return d( o , theDefault );
+	}
+
 	static public long l( final Object o ) {
 		return l( o , Long.MIN_VALUE );
 	}
 
 	static public long l( final Object o , final long theDefault ) {
 		return ( o instanceof Number ) ? ( ( Number ) o ).longValue( ) : ( o instanceof String ) ? l( s( o ) ) : theDefault;
+	}
+
+	static public long l( Map m , String thePath ) {
+		return l( m , thePath , Long.MIN_VALUE );
+	}
+
+	static public long l( Map m , String thePath , long theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return l( o , theDefault );
+	}
+
+	static public long l( List l , int theIndex ) {
+		return l( l , theIndex , Long.MIN_VALUE );
+	}
+
+	static public long l( List l , int theIndex , long theDefault ) {
+		Object o = value( l , theIndex );
+		return l( o , theDefault );
 	}
 
 	static public String s( final Object o ) {
@@ -144,6 +235,24 @@ import java.util.Set;
 
 	static public String s( final Object o , final String theDefault ) {
 		return ( o != null ) ? o.toString( ) : theDefault;
+	}
+
+	static public String s( Map m , String thePath ) {
+		return s( m , thePath , "" );
+	}
+
+	static public String s( Map m , String thePath , String theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return s( o , theDefault );
+	}
+
+	static public String s( List l , int theIndex ) {
+		return s( l , theIndex , "" );
+	}
+
+	static public String s( List l , int theIndex , String theDefault ) {
+		Object o = value( l , theIndex );
+		return s( o , theDefault );
 	}
 
 	static public boolean b( final Object o ) {
@@ -160,6 +269,24 @@ import java.util.Set;
 
 	static public boolean b( final String o , final boolean theDefault ) {
 		return o.equalsIgnoreCase( "true" ) ? true : o.equalsIgnoreCase( "false" ) ? false : theDefault;
+	}
+
+	static public boolean b( Map m , String thePath ) {
+		return b( m , thePath , false );
+	}
+
+	static public boolean b( Map m , String thePath , boolean theDefault ) {
+		Object o = getValueFromPath( m , thePath );
+		return b( o , theDefault );
+	}
+
+	static public boolean b( List l , int theIndex ) {
+		return b( l , theIndex , false );
+	}
+
+	static public boolean b( List l , int theIndex , boolean theDefault ) {
+		Object o = value( l , theIndex );
+		return b( o , theDefault );
 	}
 
 	static public < T > T o( final Class< T > theClass , final Object o1 , final T o2 ) {
@@ -340,6 +467,12 @@ import java.util.Set;
 		return o != null ? ( o instanceof Set ) ? ( Set ) o : Collections.emptySet( ) : Collections.emptySet( );
 	}
 
+	static public Set toSet( final Object ... args ) {
+		Set s = new LinkedHashSet( );
+		Collections.addAll( s , args );
+		return s;
+	}
+
 	static public boolean isNumeric( final Object o ) {
 		return isNumeric( o.toString( ) );
 	}
@@ -501,14 +634,14 @@ import java.util.Set;
 
 	static public void setValuesFor( Object theObject , Map< Object , Object > theParams ) {
 		if ( theObject instanceof Map ) {
-			toMap(theObject).putAll( theParams );
+			toMap( theObject ).putAll( theParams );
 		} else {
 			for ( Map.Entry entry : theParams.entrySet( ) ) {
 				invoke( theObject , entry.getKey( ).toString( ) , entry.getValue( ) );
 			}
 		}
 	}
-	
+
 	static public void merge( final Map m1 , final Map m2 ) {
 		/* mimics clojure's merge but modifies m2 instead of returning a new
 		 * map. This strategy disregards immutability in favor of avoiding deep
@@ -679,13 +812,6 @@ import java.util.Set;
 		return o == null ? d : o;
 	}
 
-	/**
-	 * creates an unmodifiable-list when accessing controllers and therefore
-	 * prevents external manipulation of controllers.
-	 * 
-	 * @param input
-	 * @return List<Map> unmodifiable
-	 */
 	static List< Map > unmodifiableList( final List< Map > input ) {
 		return Collections.unmodifiableList( new AbstractList< Map >( ) {
 			protected List< Map > delegate( ) {
@@ -729,6 +855,10 @@ import java.util.Set;
 		s = s.replaceAll( "([a-zA-Z0-9\\-\\_.?@]+)" , "\"$1\"" );
 		s = s.replaceAll( "\"([\\d.-]+)\"" , "$1" );
 		return s;
+	}
+
+	static public String toJSON( Map m ) {
+		return mapToJSONFormattedString( m );
 	}
 
 	static public boolean is( final int theState , final int theValue ) {
@@ -786,4 +916,39 @@ import java.util.Set;
 		 * http://www.chilkatsoft.com/java-loadLibrary-MacOSX.asp
 		 * http://blog.cedarsoft.com/2010/11/setting-java-library-path-programmatically/ */
 	}
+
+	static public Object first( Object o ) {
+		if ( o instanceof List ) {
+			List l = toList( o );
+			if ( !l.isEmpty( ) ) {
+				return l.get( 0 );
+			}
+		}
+		return null;
+	}
+
+	static public Object nth( Object o , int theIndex ) {
+		return nth( o , theIndex , null );
+	}
+
+	static public Object nth( Object o , int theIndex , Object notFound ) {
+		if ( o instanceof List ) {
+			List l = toList( o );
+			if ( ! ( theIndex < 0 && l.size( ) >= theIndex ) ) {
+				return l.get( theIndex );
+			}
+		}
+		return notFound;
+	}
+
+	static public Object rest( Object o ) {
+		if ( o instanceof List ) {
+			List l = toList( o );
+			if ( l.size( ) > 1 ) {
+				return l.subList( 1 , l.size( ) );
+			}
+		}
+		return null;
+	}
+
 }
